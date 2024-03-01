@@ -34,7 +34,6 @@ export const FibonacciPage: React.FC = () => {
   const handleButton = () => {
     if (formValue) fibonaciFunction(formValue);
   };
-
   return (
     <SolutionLayout title="Последовательность Фибоначчи">
       <div className={fibStyle.main_container}>
@@ -53,6 +52,7 @@ export const FibonacciPage: React.FC = () => {
             type="submit"
             onClick={handleButton}
             isLoader={loader}
+            disabled={formValue === "" || Number(formValue) > 19}
           />
         </div>
         {fibonaciArray?.length && (

@@ -44,13 +44,13 @@ export class LinkedList<T> implements ILinkedList<T> {
   }
   addToTheEnd(element: T) {
     let node = new Node(element);
-    let current: any = this.head;
+    let current: Node<T> | null = this.head;
 
-    while (current.next) {
+    while (current?.next) {
       current = current.next;
     }
 
-    current.next = node;
+    if (current != null) current.next = node;
     this.tail = node;
     this.size++;
   }
@@ -102,9 +102,9 @@ export class LinkedList<T> implements ILinkedList<T> {
     this.size--;
   }
   deleteTail() {
-    let current: any = this.head;
-    let newTail;
-    while (current.next) {
+    let current: Node<T> | null = this.head;
+    let newTail = null;
+    while (current?.next) {
       newTail = current;
       current = current.next;
     }

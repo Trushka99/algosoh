@@ -309,7 +309,10 @@ export const ListPage: React.FC = () => {
               onClick={addByIndexButton}
               isLoader={loadingBut === "addByInd" ? true : false}
               disabled={
-                !index || !formValue || (loadingBut != "" && "addByInd")
+                !index ||
+                Number(index) > arr.length - 1 ||
+                !formValue ||
+                (loadingBut != "" && "addByInd")
                   ? true
                   : false
               }
@@ -320,7 +323,11 @@ export const ListPage: React.FC = () => {
               onClick={deleteByIndexButton}
               isLoader={loadingBut === "deleteByInd" ? true : false}
               disabled={
-                !index || (loadingBut != "" && "deleteByInd") ? true : false
+                !index ||
+                Number(index) > arr.length - 1 ||
+                (loadingBut != "" && "deleteByInd")
+                  ? true
+                  : false
               }
             />
           </div>

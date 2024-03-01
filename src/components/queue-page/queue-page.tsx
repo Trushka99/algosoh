@@ -19,11 +19,12 @@ export const QueuePage: React.FC = () => {
   const [formValue, setFormValue] = React.useState("");
   const [disableButtons, setDisableButtons] = React.useState(false);
   const [queueArr, setQueueArr] = React.useState<TArrayString[]>(emptyQueue);
-
+  const [load, setLoad] = React.useState("");
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormValue(e.currentTarget.value);
   };
   const handeAddButton = async () => {
+    setLoad("add");
     if (formValue) {
       setFormValue("");
       queue.enqueue({ value: formValue, state: ElementStates.Changing });
@@ -39,8 +40,10 @@ export const QueuePage: React.FC = () => {
       };
       setQueueArr([...queueArr]);
     }
+    setLoad("");
   };
   const handeDeleteButton = async () => {
+    setLoad("delete");
     setDisableButtons(true);
     queue.dequeue();
     queueArr[queue.getHead() - 1] = {
@@ -52,6 +55,7 @@ export const QueuePage: React.FC = () => {
     queueArr[queue.getHead() - 1] = { value: "", state: ElementStates.Default };
     setQueueArr([...queueArr]);
     setDisableButtons(false);
+    setLoad("");
   };
 
   const handleRemoveButton = () => {
@@ -75,12 +79,14 @@ export const QueuePage: React.FC = () => {
             disabled={formValue === "" || disableButtons}
             onClick={handeAddButton}
             extraClass={queueStyle.button}
+            isLoader={load === "add"}
           />
           <Button
             text="Удалить"
             disabled={queue.isEmpty() || disableButtons}
             onClick={handeDeleteButton}
             extraClass={queueStyle.button2}
+            isLoader={load === "delete"}
           />
           <Button text="Очистить" onClick={handleRemoveButton} />
         </section>

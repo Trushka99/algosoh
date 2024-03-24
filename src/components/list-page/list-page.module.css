@@ -1,0 +1,40 @@
+.input_cont {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 12px;
+}
+.list_cont {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  margin-top: 120px;
+  justify-content: center;
+}
+.li_style {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.inputs_cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 38px;
+}
+.input {
+  width: 204px;
+  height: 60px;
+}
+.bottom_button {
+  width: 362px;
+  height: 60px;
+}
+.top_button {
+  width: 175px;
+  height: 60px;
+}
+.circle_style {
+  margin: 0 16px 0 16px;
+}

@@ -1,0 +1,21 @@
+.answer_container {
+  flex-direction: row;
+  justify-content: center;
+  display: flex;
+  gap: 16px;
+  list-style-type: none;
+  margin-top: 120px;
+}
+.main_container {
+  margin: 0 auto;
+  max-width: 70%;
+}
+.input_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.input_style {
+  max-width: 60%;
+  margin-right: 10px;
+}

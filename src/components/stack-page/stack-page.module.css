@@ -1,0 +1,27 @@
+.array_cont {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  justify-content: center;
+  gap: 16px;
+}
+.main_contain {
+  display: flex;
+  flex-direction: column;
+}
+.input_contain {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+.input_size {
+  max-width: 377px;
+  margin-right: 12px;
+}
+.button {
+  margin-right: 12px;
+}
+.button2 {
+  margin-right: 80px;
+}

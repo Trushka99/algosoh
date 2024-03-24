@@ -62,6 +62,7 @@ export const StackPage: React.FC = () => {
             extraClass={stackStyle.input_size}
           />
           <Button
+            id="addButt"
             text="Добавить"
             onClick={addButton}
             disabled={formValue === ""}
@@ -69,6 +70,7 @@ export const StackPage: React.FC = () => {
             isLoader={loadingBut === "addBut"}
           />
           <Button
+            id="deleteButt"
             text="Удалить"
             onClick={deleteButton}
             disabled={array.length === 0}
@@ -76,13 +78,14 @@ export const StackPage: React.FC = () => {
             isLoader={loadingBut === "deleteBut"}
           />
           <Button
+            id="clearButt"
             text="Очистить"
             onClick={deleteAllButton}
             disabled={array.length === 0}
           />
         </section>
 
-        <ul className={stackStyle.array_cont}>
+        <ul data-testid="list" className={stackStyle.array_cont}>
           {array &&
             array.map((item, index) => (
               <li key={index}>

@@ -184,7 +184,6 @@ export const ListPage: React.FC = () => {
         await new Promise((resolve) => setTimeout(resolve, DELAY_IN_MS));
         list.deleteAtIndex(Number(index));
 
-        await new Promise((resolve) => setTimeout(resolve, DELAY_IN_MS));
         setArr(list.getArray());
         setIndexDelete(false);
       }
@@ -256,6 +255,7 @@ export const ListPage: React.FC = () => {
               disabled={loadingBut != ""}
             />
             <Button
+              id="addInHeadBut"
               text="Добавить в head"
               onClick={addInHeadButton}
               extraClass={listStyle.top_button}
@@ -265,6 +265,7 @@ export const ListPage: React.FC = () => {
               }
             />
             <Button
+              id="addInTailBut"
               text="Добавить в tail"
               onClick={addInTailButton}
               extraClass={listStyle.top_button}
@@ -274,6 +275,7 @@ export const ListPage: React.FC = () => {
               }
             />
             <Button
+              id="deleteHeadBut"
               text="Удалить из head"
               onClick={deleteHead}
               extraClass={listStyle.top_button}
@@ -283,6 +285,7 @@ export const ListPage: React.FC = () => {
               }
             />
             <Button
+              id="deleteTailBut"
               text="Удалить из tail"
               onClick={deleteTail}
               extraClass={listStyle.top_button}
@@ -294,6 +297,7 @@ export const ListPage: React.FC = () => {
           </div>
           <div className={listStyle.input_cont}>
             <Input
+              id="indexInput"
               placeholder="Введите индекс"
               max={5}
               min="0"
@@ -304,6 +308,7 @@ export const ListPage: React.FC = () => {
               disabled={loadingBut != ""}
             />
             <Button
+              id="addByIndBut"
               text="Добавить по индексу"
               extraClass={listStyle.bottom_button}
               onClick={addByIndexButton}
@@ -318,6 +323,7 @@ export const ListPage: React.FC = () => {
               }
             />
             <Button
+              id="deleteByIndBut"
               text="Удалить по индексу"
               extraClass={listStyle.bottom_button}
               onClick={deleteByIndexButton}
@@ -332,7 +338,7 @@ export const ListPage: React.FC = () => {
             />
           </div>
         </section>
-        <ul className={listStyle.list_cont}>
+        <ul id="list" className={listStyle.list_cont}>
           {arr &&
             arr.map((item, index) => (
               <li className={listStyle.li_style} key={index}>

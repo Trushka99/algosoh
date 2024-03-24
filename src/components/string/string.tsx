@@ -67,6 +67,7 @@ export const StringComponent: React.FC = () => {
       <div className={stringStyle.main_container}>
         <div className={stringStyle.input_container}>
           <Input
+            id="methodology-input"
             isLimitText={true}
             maxLength={11}
             value={formValue}

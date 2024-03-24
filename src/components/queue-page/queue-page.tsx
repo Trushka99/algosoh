@@ -75,6 +75,7 @@ export const QueuePage: React.FC = () => {
             extraClass={queueStyle.input_size}
           />
           <Button
+            id="addButt"
             text="Добавить"
             disabled={formValue === "" || disableButtons}
             onClick={handeAddButton}
@@ -82,13 +83,14 @@ export const QueuePage: React.FC = () => {
             isLoader={load === "add"}
           />
           <Button
+            id="deleteButt"
             text="Удалить"
             disabled={queue.isEmpty() || disableButtons}
             onClick={handeDeleteButton}
             extraClass={queueStyle.button2}
             isLoader={load === "delete"}
           />
-          <Button text="Очистить" onClick={handleRemoveButton} />
+          <Button id="clearButt" text="Очистить" onClick={handleRemoveButton} />
         </section>
 
         <ul className={queueStyle.array_cont}>

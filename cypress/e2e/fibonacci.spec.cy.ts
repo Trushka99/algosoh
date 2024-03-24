@@ -1,6 +1,7 @@
+import { testUrl,circle } from "../../src/constants/cypress-const";
 describe("Страница Последовательность Фибоначчи работает корректно", () => {
   beforeEach(function () {
-    cy.visit("http://localhost:3000/fibonacci");
+    cy.visit(`${testUrl}/fibonacci`);
   });
   it("если в инпуте пусто, то кнопка добавления недоступна", () => {
     cy.get("input").should("be.empty");
@@ -13,7 +14,7 @@ describe("Страница Последовательность Фибоначч
     cy.get("button").should("not.be.disabled");
     cy.get("button[type='submit']").click();
     cy.wait(5000);
-    cy.get("[data-testid=circle]").each((el: string, index) => {
+    cy.get(circle).each((el: string, index) => {
       cy.get(el).contains(exampleFibonacci[index]);
     });
   });

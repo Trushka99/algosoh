@@ -6,10 +6,12 @@ import {
   clearButton,
   defaultState,
   changingState,
+  testUrl,
+  circle
 } from "../../src/constants/cypress-const";
 describe("Страница Стэк работает корректно", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000/stack");
+    cy.visit(`${testUrl}/stack`);
   });
   it("если в инпуте пусто, то кнопка добавления недоступна", () => {
     cy.get("input").should("be.empty");
@@ -24,16 +26,16 @@ describe("Страница Стэк работает корректно", () => 
     cy.get(addButton)
       .should("have.attr", "class")
       .then((className) => expect(className).contains("loader"));
-    cy.get("[data-testid=circle]")
+    cy.get(circle)
       .should("have.attr", "class")
       .then((className) => expect(className).contains(changingState));
 
     cy.wait(SHORT_DELAY_IN_MS);
 
-    cy.get("[data-testid=circle]")
+    cy.get(circle)
       .should("have.attr", "class")
       .then((className) => expect(className).contains(defaultState));
-    cy.get("[data-testid=circle]").should("have.text", "44");
+    cy.get(circle).should("have.text", "44");
   });
   it("Удаление элемента выполняется корректно", () => {
     cy.get("input").type("44");
@@ -44,7 +46,7 @@ describe("Страница Стэк работает корректно", () => 
     cy.get(deleteButton)
       .should("have.attr", "class")
       .then((className) => expect(className).contains("loader"));
-    cy.get("[data-testid=circle]")
+    cy.get(circle)
       .should("have.attr", "class")
       .then((className) => expect(className).contains(changingState));
     cy.wait(400);

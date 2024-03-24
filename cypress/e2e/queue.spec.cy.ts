@@ -6,11 +6,15 @@ import {
   clearButton,
   defaultState,
   changingState,
+  testUrl,
+  circle,
+  head,
+  tail
 } from "../../src/constants/cypress-const";
 
 describe("Страница Очередь работает корректно", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000/queue");
+    cy.visit(`${testUrl}/queue`);
   });
   it("если в инпуте пусто, то кнопка добавления недоступна", () => {
     cy.get("input").should("be.empty");
@@ -25,7 +29,7 @@ describe("Страница Очередь работает корректно", 
       .should("have.attr", "class")
       .then((className) => expect(className).contains("loader"));
 
-    cy.get("[data-testid=circle]").then((item: any) => {
+    cy.get(circle).then((item: any) => {
       cy.get(item[0])
         .should("have.attr", "class")
         .then((className) => expect(className).contains(changingState));
@@ -33,14 +37,14 @@ describe("Страница Очередь работает корректно", 
 
     cy.wait(SHORT_DELAY_IN_MS);
 
-    cy.get("[data-testid=circle]").then((item: any) => {
+    cy.get(circle).then((item: any) => {
       cy.get(item[0])
         .should("have.attr", "class")
         .then((className) => expect(className).contains(defaultState));
     });
 
-    cy.get("[data-testid=head]").invoke("first").should("have.text", "head");
-    cy.get("[data-testid=tail]").invoke("first").should("have.text", "tail");
+    cy.get(head).invoke("first").should("have.text", "head");
+    cy.get(tail).invoke("first").should("have.text", "tail");
 
     cy.get("input").should("be.empty");
     cy.get("input").type("kKA");
@@ -49,7 +53,7 @@ describe("Страница Очередь работает корректно", 
       .should("have.attr", "class")
       .then((className) => expect(className).contains("loader"));
 
-    cy.get("[data-testid=circle]").then((item: any) => {
+    cy.get(circle).then((item: any) => {
       cy.get(item[1])
         .should("have.attr", "class")
         .then((className) => expect(className).contains(changingState));
@@ -57,14 +61,14 @@ describe("Страница Очередь работает корректно", 
 
     cy.wait(SHORT_DELAY_IN_MS);
 
-    cy.get("[data-testid=circle]").then((item: any) => {
+    cy.get(circle).then((item: any) => {
       cy.get(item[1])
         .should("have.attr", "class")
         .then((className) => expect(className).contains(defaultState));
     });
 
-    cy.get("[data-testid=head]").invoke("first").should("have.text", "head");
-    cy.get("[data-testid=tail]").then((item: any) => {
+    cy.get(head).invoke("first").should("have.text", "head");
+    cy.get(tail).then((item: any) => {
       cy.get(item[1]).should("have.text", "tail");
     });
   });
@@ -82,22 +86,22 @@ describe("Страница Очередь работает корректно", 
       .should("have.attr", "class")
       .then((className) => expect(className).contains("loader"));
 
-    cy.get("[data-testid=circle]").then((item: any) => {
+    cy.get(circle).then((item: any) => {
       cy.get(item[0])
         .should("have.attr", "class")
         .then((className) => expect(className).contains(changingState));
     });
     cy.wait(SHORT_DELAY_IN_MS);
-    cy.get("[data-testid=circle]").then((item: any) => {
+    cy.get(circle).then((item: any) => {
       cy.get(item[0])
         .should("have.attr", "class")
         .then((className) => expect(className).contains(defaultState));
       cy.get(item[0]).should("have.text", "");
     });
-    cy.get("[data-testid=head]").then((item: any) => {
+    cy.get(head).then((item: any) => {
       cy.get(item[1]).should("have.text", "head");
     });
-    cy.get("[data-testid=tail]").then((item: any) => {
+    cy.get(tail).then((item: any) => {
       cy.get(item[1]).should("have.text", "tail");
     });
   });
@@ -110,7 +114,7 @@ describe("Страница Очередь работает корректно", 
     cy.get(addButton).click();
     cy.wait(DELAY_IN_MS);
     cy.get(clearButton).click();
-    cy.get("[data-testid=circle]").each((list) => {
+    cy.get(circle).each((list) => {
       expect(list).to.contain("");
     });
   });
